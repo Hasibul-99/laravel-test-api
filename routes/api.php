@@ -23,3 +23,6 @@ route::get('/users/{id?}', [UsersApiController::class, 'showUser']);
 route::post('/add-user', [UsersApiController::class, 'addUser']);
 route::post('/add-multiple-user', [UsersApiController::class, 'addMultipleUser']);
 route::put('/update-user/{id}', [UsersApiController::class, 'updateUser']);
+route::patch('/update-single-record/{id}', [UsersApiController::class, 'updateUserSingleRecord']);
+route::delete('/delete-user/{id}', [UsersApiController::class, 'deleteUser']);
+route::delete('/delete-user-json', [UsersApiController::class, 'deleteUserJSON']);
