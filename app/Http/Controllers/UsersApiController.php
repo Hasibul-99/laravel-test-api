@@ -163,12 +163,19 @@ class UsersApiController extends Controller
     }
 
     public function deleteUserJSON(Request $request) {
-        if ($request->isMethod('delete')) {
-            $data = $request->all();
+        $header = $request->header("Authorization");
 
-            User::where('id', $data['id'])->delete();
-            $message = "User Succesfully Deleted";
+        if ($header) {
+            $message = "Authorization is requried";
             return response()->json(['message'=>$message], 200);
+        } else {
+            if ($request->isMethod('delete')) {
+                $data = $request->all();
+    
+                User::where('id', $data['id'])->delete();
+                $message = "User Succesfully Deleted";
+                return response()->json(['message'=>$message], 200);
+            }
         }
     }
 }
